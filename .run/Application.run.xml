@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Application" type="MicronautRunConfigurationType" factoryName="Micronaut" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="com.example.urlshortener.Application" />
+    <module name="url-shortener.backend.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.example.urlshortener.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="alternativeJrePath" />
+    <option name="alternativeJrePathEnabled" value="false" />
+    <option name="mainClass" value="com.example.urlshortener.Application" />
+    <option name="passParentEnvs" value="true" />
+    <option name="vmParameters" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

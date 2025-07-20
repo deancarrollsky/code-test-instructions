@@ -14,12 +14,25 @@ function App() {
       const response = await axios.post('http://localhost:8080/shorten', { fullUrl, customAlias });
       setShortUrl(response.data.shortUrl);
       setError('');
-      fetchUrls();
+      setCustomAlias('')
+      setFullUrl('')
+      await fetchUrls();
     } catch (err) {
       setError(err.response?.data?.message || 'Error shortening URL');
     }
   };
 
+  const handleDelete = async (e, url) => {
+    e.preventDefault();
+    try {
+      const response = await axios.delete('http://localhost:8080/' + url.alias, { fullUrl, customAlias });
+      setShortUrl(response.data.shortUrl);
+      setError('');
+      await fetchUrls();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Error shortening URL');
+    }
+  }
   const fetchUrls = async () => {
     const response = await axios.get('http://localhost:8080/urls');
     setUrls(response.data);
@@ -57,7 +70,8 @@ function App() {
       <ul>
         {urls.map((url) => (
           <li key={url.alias} className="my-2">
-            <a href={url.shortUrl} className="text-blue-500">{url.shortUrl}</a> - {url.fullUrl}
+            <a href={url.shortUrl} className="text-blue-500">{url.alias}</a> - {url.fullUrl}
+            <button onClick={e => handleDelete(e, url)} className="bg-blue-500 text-white p-2 m-2 rounded">Delete</button>
           </li>
         ))}
       </ul>

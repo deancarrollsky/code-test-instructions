@@ -29,7 +29,7 @@ tests.
    ```
 
 4. **Access the application**:
-    - Frontend UI: `http://localhost:3000`
+    - Frontend UI: `http://localhost:5173`
     - Backend API: `http://localhost:8080`
     - MongoDB: `mongodb://localhost:27017`
 
@@ -52,7 +52,7 @@ tests.
 
 ### Via UI
 
-1. Open `http://localhost:3000` in your browser.
+1. Open `http://localhost:5173` in your browser.
 2. Enter a full URL (e.g., `https://example.com/very/long/url`) and an optional custom alias (e.g., `my-custom-alias`).
 3. Click "Shorten" to generate a shortened URL.
 4. Use the shortened URL (e.g., `http://localhost:8080/my-custom-alias`) to redirect to the original URL.
