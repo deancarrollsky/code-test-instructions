@@ -1,6 +1,9 @@
 micronaut:
   application:
     name: url-shortener
+  server:
+    cors:
+      enabled: true
 app:
   baseUrl: http://localhost:8080/
 datasources:
@@ -11,4 +14,5 @@ mongodb:
   connection-pool:
     max-size: 5
   uri: mongodb://localhost:27017/shorten
-
+jackson:
+  serializationInclusion: ALWAYS
