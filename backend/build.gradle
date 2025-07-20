@@ -1,21 +1,18 @@
 plugins {
-    id 'io.micronaut.application' version '4.6.3'
-    id 'io.micronaut.test' version '4.6.3'
-}
-
-micronaut {
-    version '4.6.3'
-    testRuntime 'junit5'
+    id 'io.micronaut.minimal.application' version '4.5.4'
 }
 
 dependencies {
     implementation 'io.micronaut:micronaut-http-server-netty'
     implementation 'io.micronaut.data:micronaut-data-mongodb'
     implementation 'io.micronaut:micronaut-validation'
+
+    runtimeOnly("ch.qos.logback:logback-classic")
+
     testImplementation 'io.micronaut.test:micronaut-test-junit5'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
-    implementation 'org.mongodb:mongodb-driver-sync:5.1.0'
+    testImplementation("io.micronaut.test:micronaut-test-junit5")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 application {
