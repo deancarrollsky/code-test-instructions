@@ -47,7 +47,9 @@ tests.
     - Run it through your IDE starting the ``RunSmokeTests`` in ``tests/acceptance/src/main/java/com/example``
       The working directory should be set to ``tests/acceptance``
       *This would be packaged to be ran in the pipeline*
-
+7. **To run NFTs**:
+   This is an example nft that could be run in the pipeline to check latency,load
+   - Run it through your IDE starting the ``RunSims`` in `tests/nft/src/main/java/com/example` 
 ## Example Usage
 
 ### Via UI
