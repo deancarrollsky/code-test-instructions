@@ -1,0 +1,5 @@
+rootProject.name = 'url-shortener'
+include 'backend'
+include 'frontend'
+include 'tests:acceptance'
+include 'tests:nft'

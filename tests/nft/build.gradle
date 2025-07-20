@@ -1,0 +1,13 @@
+plugins {
+    id 'scala'
+    id 'com.github.lkishalmi.gatling' version '3.7.3'
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.13.12'
+    gatling 'io.gatling.highcharts:gatling-charts-highcharts:3.9.5'
+}
+
+gatling {
+    simulationsDir = 'src/test/scala/com/example'
+}

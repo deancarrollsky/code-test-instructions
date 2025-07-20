@@ -1,0 +1,28 @@
+plugins {
+    id 'io.micronaut.application' version '4.6.3'
+    id 'io.micronaut.test' version '4.6.3'
+}
+
+micronaut {
+    version '4.6.3'
+    testRuntime 'junit5'
+}
+
+dependencies {
+    implementation 'io.micronaut:micronaut-http-server-netty'
+    implementation 'io.micronaut.data:micronaut-data-mongodb'
+    implementation 'io.micronaut:micronaut-validation'
+    testImplementation 'io.micronaut.test:micronaut-test-junit5'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
+    implementation 'org.mongodb:mongodb-driver-sync:5.1.0'
+}
+
+application {
+    mainClass.set('com.example.urlshortener.Application')
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
