@@ -1,0 +1,2 @@
+micronaut:
+  http.client.follow-redirects: false

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +32,7 @@ class UrlShortenerControllerTest {
     void testShortenUrl() {
         String fullUrl = "https://example.com";
         String alias = "abc123";
-        UrlShortenerController.ShortUrlRequest request = new UrlShortenerController.ShortUrlRequest(fullUrl, null);
+        UrlShortenerController.ShortUrlRequest request = new UrlShortenerController.ShortUrlRequest(newUrl(fullUrl), null);
 
         when(service.shortenUrl(fullUrl, null)).thenReturn("http://localhost:8080/" + alias);
 
@@ -46,7 +48,7 @@ class UrlShortenerControllerTest {
     void testShortenUrlWithAliasProvided() {
         String fullUrl = "https://example.com";
         String alias = "other";
-        UrlShortenerController.ShortUrlRequest request = new UrlShortenerController.ShortUrlRequest(fullUrl, alias);
+        UrlShortenerController.ShortUrlRequest request = new UrlShortenerController.ShortUrlRequest(newUrl(fullUrl), alias);
 
         when(service.shortenUrl(fullUrl, alias)).thenReturn("http://localhost:8080/" + alias);
 
@@ -107,8 +109,16 @@ class UrlShortenerControllerTest {
 
         assertEquals(2, result.size());
         assertEquals("abc123", result.getFirst().alias());
-        assertEquals("http://localhost:8080/abc123", result.get(0).shortUrl());
+        assertEquals("http://localhost:8080/abc123", result.getFirst().shortUrl());
 
         verify(service).listUrls();
+    }
+
+    private URL newUrl(String fullUrl) {
+        try {
+            return new URL(fullUrl);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

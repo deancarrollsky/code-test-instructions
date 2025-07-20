@@ -2,11 +2,17 @@ package com.example.urlshortener.controller;
 
 import com.example.urlshortener.model.UrlMapping;
 import com.example.urlshortener.service.UrlShortenerService;
+import io.micronaut.core.annotation.Introspected;
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.micronaut.http.uri.UriBuilder;
+import io.micronaut.serde.annotation.Serdeable;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
 
 @Controller
@@ -17,9 +23,12 @@ public class UrlShortenerController {
         this.service = service;
     }
 
-    @Post("/shorten")
+    @Post(value = "/shorten")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public HttpResponse<ShortUrlResponse> shorten(@Body ShortUrlRequest request) {
-        String shortUrl = service.shortenUrl(request.fullUrl, request.customAlias);
+        URL fullUrl = request.fullUrl;
+        String shortUrl = service.shortenUrl(fullUrl.toString(), request.customAlias);
         return HttpResponse.created(new ShortUrlResponse(shortUrl));
     }
 
@@ -43,7 +52,10 @@ public class UrlShortenerController {
                 .toList();
     }
 
-    public record ShortUrlRequest(@NotBlank String fullUrl, String customAlias) {}
+    @Serdeable
+    public record ShortUrlRequest(@NotNull URL fullUrl, String customAlias) {}
+    @Serdeable
     public record ShortUrlResponse(String shortUrl) {}
+    @Serdeable
     public record UrlMappingResponse(String alias, String fullUrl, String shortUrl) {}
 }
