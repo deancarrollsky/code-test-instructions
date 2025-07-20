@@ -3,16 +3,22 @@ plugins {
 }
 
 dependencies {
+    annotationProcessor 'io.micronaut.validation:micronaut-validation-processor'
+    annotationProcessor 'io.micronaut.data:micronaut-data-document-processor'
+
     implementation 'io.micronaut:micronaut-http-server-netty'
     implementation 'io.micronaut.data:micronaut-data-mongodb'
-    implementation 'io.micronaut:micronaut-validation'
+    implementation 'io.micronaut.mongodb:micronaut-mongo-sync'
+    implementation 'io.micronaut.validation:micronaut-validation'
 
-    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly 'ch.qos.logback:logback-classic'
+    runtimeOnly("org.yaml:snakeyaml")
 
     testImplementation 'io.micronaut.test:micronaut-test-junit5'
-    testImplementation("io.micronaut.test:micronaut-test-junit5")
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.18.0'
+    testImplementation 'io.micronaut:micronaut-http-client-jdk'
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 application {
@@ -22,4 +28,8 @@ application {
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
+}
+
+test {
+    useJUnitPlatform()
 }

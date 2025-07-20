@@ -1,7 +1,10 @@
 micronaut:
   application:
     name: url-shortener
+app:
+  baseUrl: http://localhost:8080
 datasources:
   default:
     url: mongodb://mongodb:27017/urlshortener
     driverClassName: com.mongodb.client.MongoClient
+
