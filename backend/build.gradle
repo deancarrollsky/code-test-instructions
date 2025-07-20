@@ -1,5 +1,6 @@
 plugins {
     id 'io.micronaut.minimal.application' version '4.5.4'
+    id 'com.gradleup.shadow' version '8.3.8'
 }
 
 dependencies {
@@ -26,7 +27,7 @@ dependencies {
 }
 
 application {
-    mainClass.set('com.example.urlshortener.Application')
+    mainClass = "com.example.urlshortener.Application"
 }
 
 java {
