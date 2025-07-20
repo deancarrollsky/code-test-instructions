@@ -1,3 +1,4 @@
+@acceptance
 Feature: URL Shortener
 
   Scenario: Shorten a URL with a custom alias

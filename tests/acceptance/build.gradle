@@ -3,11 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation 'io.cucumber:cucumber-java:7.14.0'
-    testImplementation 'io.cucumber:cucumber-junit:7.14.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
-    testImplementation 'io.rest-assured:rest-assured:5.4.0'
+    implementation 'io.cucumber:cucumber-java:7.26.0'
+    implementation 'io.cucumber:cucumber-junit:7.26.0'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
+    implementation 'io.rest-assured:rest-assured:5.5.5'
 }
 
 test {
