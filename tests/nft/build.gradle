@@ -1,13 +1,9 @@
 plugins {
-    id 'scala'
-    id 'com.github.lkishalmi.gatling' version '3.7.3'
+    id 'java'
+    id 'io.gatling.gradle' version '3.14.3.2'
 }
 
 dependencies {
-    implementation 'org.scala-lang:scala-library:2.13.12'
-    gatling 'io.gatling.highcharts:gatling-charts-highcharts:3.9.5'
-}
-
-gatling {
-    simulationsDir = 'src/test/scala/com/example'
+    implementation 'io.gatling.highcharts:gatling-charts-highcharts:3.9.5'
+    testImplementation 'io.gatling:gatling-test-framework:3.9.5'
 }
