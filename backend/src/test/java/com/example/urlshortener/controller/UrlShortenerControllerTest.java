@@ -1,5 +1,6 @@
 package com.example.urlshortener.controller;
 
+import com.example.urlshortener.config.AppConfig;
 import com.example.urlshortener.model.UrlMapping;
 import com.example.urlshortener.service.UrlShortenerService;
 import io.micronaut.http.HttpResponse;
@@ -25,7 +26,9 @@ class UrlShortenerControllerTest {
     @BeforeEach
     void setUp() {
         service = Mockito.mock(UrlShortenerService.class);
-        controller = new UrlShortenerController(service);
+        AppConfig config = Mockito.mock(AppConfig.class);
+        when(config.baseUrl()).thenReturn("http://localhost:8080/");
+        controller = new UrlShortenerController(service, config);
     }
 
     @Test

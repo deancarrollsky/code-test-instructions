@@ -1,5 +1,6 @@
 package com.example.urlshortener.controller;
 
+import com.example.urlshortener.config.AppConfig;
 import com.example.urlshortener.model.UrlMapping;
 import com.example.urlshortener.service.UrlShortenerService;
 import io.micronaut.core.annotation.Introspected;
@@ -18,9 +19,11 @@ import java.util.List;
 @Controller
 public class UrlShortenerController {
     private final UrlShortenerService service;
+    private final AppConfig appConfig;
 
-    public UrlShortenerController(UrlShortenerService service) {
+    public UrlShortenerController(UrlShortenerService service, AppConfig appConfig) {
         this.service = service;
+        this.appConfig = appConfig;
     }
 
     @Post(value = "/shorten")
@@ -46,9 +49,10 @@ public class UrlShortenerController {
     }
 
     @Get("/urls")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<UrlMappingResponse> list() {
         return service.listUrls().stream()
-                .map(url -> new UrlMappingResponse(url.getAlias(), url.getFullUrl(), "http://localhost:8080/" + url.getAlias()))
+                .map(url -> new UrlMappingResponse(url.getAlias(), url.getFullUrl(),  appConfig.baseUrl() + url.getAlias()))
                 .toList();
     }
 
