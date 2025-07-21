@@ -26,7 +26,6 @@ function App() {
     e.preventDefault();
     try {
       const response = await axios.delete('http://localhost:8080/' + url.alias, { fullUrl, customAlias });
-      setShortUrl(response.data.shortUrl);
       setError('');
       await fetchUrls();
     } catch (err) {
