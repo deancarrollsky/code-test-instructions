@@ -93,3 +93,4 @@ tests.
 - In the interest of keeping time usage reasonable not all tests that would be done for production have been done but i've 
   covered a fairly comprehensive spike across the types of testing
 - Some of the modules have hard coded hosts/ports which in practice would need to be sourced from config
+- Would have added healthchecks, prometheus endpoint/metrics in general and openapi + swagger ui, config endpoint with obfuscated secrets 
