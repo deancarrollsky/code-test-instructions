@@ -14,7 +14,7 @@ tests.
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-forked-repo-url>
+   git clone https://github.com/deancarrollsky/code-test-instructions.git url-shortener
    cd url-shortener
    ```
 
