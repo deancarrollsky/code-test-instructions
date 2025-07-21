@@ -48,6 +48,7 @@ public class UrlShortenerService {
         return repository.findAll().stream().toList();
     }
 
+    // Intentionally broken to talk about why NFTs could help quality issues
     private String generateNewAlias() {
         long now = System.currentTimeMillis();
         long difference = now - START_TIME;
