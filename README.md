@@ -84,7 +84,7 @@ tests.
 3. Start the backend by running Application in ``backend/src/main/java/com/example``
 
 ## Notes and Assumptions
-- Uses MongoDB for persistence.
+- Uses MongoDB for persistence.  (Data is lost on mongodb restart, in higher environments you'd have it setup properly)
 - Backend is implemented with Micronaut and Java 21.
 - Frontend is a simple React app with Tailwind CSS.
 - Acceptance tests use Cucumber with JUnit.
