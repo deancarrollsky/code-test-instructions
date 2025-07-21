@@ -90,3 +90,6 @@ tests.
 - Acceptance tests use Cucumber with JUnit.
 - Load tests use Gatling.
 - Custom aliases must be unique; duplicates return a 400 error.
+- In the interest of keeping time usage reasonable not all tests that would be done for production have been done but i've 
+  covered a fairly comprehensive spike across the types of testing
+- Some of the modules have hard coded hosts/ports which in practice would need to be sourced from config
