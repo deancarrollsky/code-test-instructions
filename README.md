@@ -90,7 +90,18 @@ tests.
 - Acceptance tests use Cucumber with JUnit.
 - Load tests use Gatling.
 - Custom aliases must be unique; duplicates return a 400 error.
-- In the interest of keeping time usage reasonable not all tests that would be done for production have been done but i've 
-  covered a fairly comprehensive spike across the types of testing
-- Some of the modules have hard coded hosts/ports which in practice would need to be sourced from config
-- Would have added healthchecks, prometheus endpoint/metrics in general and openapi + swagger ui, config endpoint with obfuscated secrets 
+
+## What would make this prod ready
+In the interest of keeping time usage reasonable the following was skipped:
+1.  not all tests that would be done for production have been done but I've
+   covered a fairly comprehensive spike across the types of testing.
+   **The most obvious thing missing is unhappy paths with downstream database, and what to do if a database is struggling**
+2. Some of the modules have hard coded hosts/ports which in practice would need to be sourced from config
+3. Add healthchecks of the appropriate types
+4. prometheus metrics endpoints with the support alerting(alert-manager + downstream notifiers), dashboards(grafana) infrastructure. (Or the equivalent setup)
+5. openapi + swagger ui,
+6. config endpoint with obfuscated secrets for smoke tests
+7. MDC with json structured logging for ingestion probably following some schema
+8. full CD pipeline with docker image promotion(I can demo one setup if required)
+9. Security hardening cors restrictions/content-security-policies, etc
+10. dependency scanning to make sure we're kept up to date ( could just use githubs dependabot) and/or something like veracode if we'd like to know as early as possible.
